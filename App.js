@@ -139,7 +139,7 @@ export default function App() {
           name="Home"
           component={HomeScreen}
           options={{
-            tabBarLabel: 'OTEL',
+            tabBarLabel: 'OTELs',
             tabBarIcon: ({color, size}) => (
               <MaterialCommunityIcons name="home" color={color} size={size} />
             ),

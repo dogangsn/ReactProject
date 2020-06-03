@@ -40,6 +40,7 @@ const Tab = createMaterialBottomTabNavigator();
 //     </View>
 //   );
 // }
+
 function MyTabBar({state, descriptors, navigation}) {
   return (
     <View style={{flexDirection: 'row'}}>
@@ -139,9 +140,9 @@ export default function App() {
           name="Home"
           component={HomeScreen}
           options={{
-            tabBarLabel: 'OTELs',
+            tabBarLabel: 'OTEL',
             tabBarIcon: ({color, size}) => (
-              <MaterialCommunityIcons name="home" color={color} size={size} />
+              <MaterialCommunityIcons name="home" color={color} size={26} />
             ),
           }}
         />
@@ -151,7 +152,7 @@ export default function App() {
           options={{
             tabBarLabel: 'SERVİSLER',
             tabBarIcon: ({color, size}) => (
-              <Icon name="ios-home" color={color} size={size} />
+              <MaterialCommunityIcons name="telegram" color={color} size={26} />
             ),
           }}
         />
@@ -161,7 +162,7 @@ export default function App() {
           options={{
             tabBarLabel: 'FIRSATLAR',
             tabBarIcon: ({color, size}) => (
-              <Icon name="home" color={color} size={size} />
+              <MaterialCommunityIcons name="home" color={color} size={26} />
             ),
           }}
         />
@@ -171,7 +172,7 @@ export default function App() {
           options={{
             tabBarLabel: 'MESAJLARIM',
             tabBarIcon: ({color, size}) => (
-              <Icon name="home" color={color} size={size} />
+              <MaterialCommunityIcons name="home" color={color} size={26} />
             ),
           }}
         />
@@ -181,7 +182,7 @@ export default function App() {
           options={{
             tabBarLabel: 'HESABIM',
             tabBarIcon: ({color, size}) => (
-              <Icon name="home" color={color} size={size} />
+              <MaterialCommunityIcons name="home" color={color} size={26} />
             ),
           }}
         />

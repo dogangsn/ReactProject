@@ -14,7 +14,6 @@
     "@react-navigation/bottom-tabs": "^5.0.5",
     "@react-navigation/material-bottom-tabs": "^5.2.9",
     "@react-navigation/native": "^5.5.0",
-    "@types/react-native-snap-carousel": "^3.8.1",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-fontawesome": "^7.0.0",
@@ -22,6 +21,7 @@
     "react-native-paper": "^3.10.1",
     "react-native-reanimated": "^1.9.0",
     "react-native-screens": "^1.0.0-alpha.23",
+    "react-native-snap-carousel": "^3.7.2",
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^4.0.10"
   },

@@ -1,51 +1,34 @@
-import React from 'react';
-import {View, Text, Button, StyleSheet, StatusBar} from 'react-native';
-import {useTheme} from '@react-navigation/native';
-import Carousel, {Pagination} from 'react-native-snap-carousel';
+import React, {Component} from 'react';
+import {Text, View, Dimensions, StyleSheet} from 'react-native';
 
-const HomeScreen = ({navigation}) => {
-  const {colors} = useTheme();
+import Carousel from 'react-native-snap-carousel'; // Version can be specified in package.json
 
-  const theme = useTheme();
+import {scrollInterpolator, animatedStyles} from '../utils/animations';
 
-  return (
-    <View style={styles.container}>
-      <StatusBar barStyle={theme.dark ? 'light-content' : 'dark-content'} />
-      <Text style={{color: colors.text}}>Home Screen</Text>
-      <Button
-        title="Go to details screen"
-        onPress={() => navigation.navigate('Details')}
-      />
-    </View>
-  );
-};
+const SLIDER_WIDTH = Dimensions.get('window').width;
+const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7);
+const ITEM_HEIGHT = Math.round((ITEM_WIDTH * 3) / 4);
 
-export default class MyCarousel extends Component {
-  _renderItem({item, index}) {
-    return <MySlideComponent data={item} />;
+const DATA = [];
+for (let i = 0; i < 10; i++) {
+  DATA.push(i);
+}
+
+export default class App extends Component {
+  state = {
+    index: 0,
+  };
+
+  constructor(props) {
+    super(props);
+    this._renderItem = this._renderItem.bind(this);
   }
-  get pagination() {
-    const {entries, activeSlide} = this.state;
+
+  _renderItem({item}) {
     return (
-      <Pagination
-        dotsLength={entries.length}
-        activeDotIndex={activeSlide}
-        containerStyle={{backgroundColor: 'rgba(0, 0, 0, 0.75)'}}
-        dotStyle={{
-          width: 10,
-          height: 10,
-          borderRadius: 5,
-          marginHorizontal: 8,
-          backgroundColor: 'rgba(255, 255, 255, 0.92)',
-        }}
-        inactiveDotStyle={
-          {
-            // Define styles for inactive dots here
-          }
-        }
-        inactiveDotOpacity={0.4}
-        inactiveDotScale={0.6}
-      />
+      <View style={styles.itemContainer}>
+        <Text style={styles.itemLabel}>{`Item ${item}`}</Text>
+      </View>
     );
   }
 
@@ -53,20 +36,43 @@ export default class MyCarousel extends Component {
     return (
       <View>
         <Carousel
-          data={this.state.entries}
+          ref={c => (this.carousel = c)}
+          data={DATA}
           renderItem={this._renderItem}
-          onSnapToItem={index => this.setState({activeSlide: index})}
+          sliderWidth={SLIDER_WIDTH}
+          itemWidth={ITEM_WIDTH}
+          containerCustomStyle={styles.carouselContainer}
+          inactiveSlideShift={0}
+          onSnapToItem={index => this.setState({index})}
+          scrollInterpolator={scrollInterpolator}
+          slideInterpolatedStyle={animatedStyles}
+          useScrollView={true}
         />
-        {this.pagination}
+        <Text style={styles.counter}>{this.state.index}</Text>
       </View>
     );
   }
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// })
+const styles = StyleSheet.create({
+  carouselContainer: {
+    marginTop: 50,
+  },
+  itemContainer: {
+    width: ITEM_WIDTH,
+    height: ITEM_HEIGHT,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'dodgerblue',
+  },
+  itemLabel: {
+    color: 'white',
+    fontSize: 24,
+  },
+  counter: {
+    marginTop: 25,
+    fontSize: 30,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+});

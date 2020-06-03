@@ -152,7 +152,11 @@ export default function App() {
           options={{
             tabBarLabel: 'SERVİSLER',
             tabBarIcon: ({color, size}) => (
-              <MaterialCommunityIcons name="telegram" color={color} size={26} />
+              <MaterialCommunityIcons
+                name="room-service-outline"
+                color={color}
+                size={26}
+              />
             ),
           }}
         />
@@ -162,7 +166,11 @@ export default function App() {
           options={{
             tabBarLabel: 'FIRSATLAR',
             tabBarIcon: ({color, size}) => (
-              <MaterialCommunityIcons name="home" color={color} size={26} />
+              <MaterialCommunityIcons
+                name="gift-outline"
+                color={color}
+                size={26}
+              />
             ),
           }}
         />
@@ -172,7 +180,11 @@ export default function App() {
           options={{
             tabBarLabel: 'MESAJLARIM',
             tabBarIcon: ({color, size}) => (
-              <MaterialCommunityIcons name="home" color={color} size={26} />
+              <MaterialCommunityIcons
+                name="email-outline"
+                color={color}
+                size={26}
+              />
             ),
           }}
         />
@@ -182,7 +194,7 @@ export default function App() {
           options={{
             tabBarLabel: 'HESABIM',
             tabBarIcon: ({color, size}) => (
-              <MaterialCommunityIcons name="home" color={color} size={26} />
+              <MaterialCommunityIcons name="account" color={color} size={26} />
             ),
           }}
         />

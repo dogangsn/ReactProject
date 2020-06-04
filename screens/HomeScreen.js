@@ -48,7 +48,7 @@ export default class App extends Component {
           slideInterpolatedStyle={animatedStyles}
           useScrollView={true}
         />
-        <Text style={styles.counter}>{this.state.index}</Text>
+        {/* <Text style={styles.counter}>{this.state.index}</Text> */}
       </View>
     );
   }
